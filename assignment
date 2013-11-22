@@ -5,13 +5,13 @@ For example, the format "B|A|op CCCC" indicates that the format consists of two 
 Syntax
 The third column of the format table indicates the human-oriented syntax for instructions which use the indicated format. Each instruction starts with the named opcode and is optionally followed by one or more arguments, themselves separated with commas.Wherever an argument refers to a field from the first column, the letter for that field is indicated in the syntax, repeated once for each four bits of the field. For example, an eight-bit field labeled "BB" in the first column would also be labeled "BB" in the syntax column.Arguments which name a register have the form "vX". The prefix "v" was chosen instead of the more common "r" exactly to avoid conflicting with (non-virtual) architectures on which a Dalvik virtual machine might be implemented which themselves use the prefix "r" for their registers. (That is, this decision makes it possible to talk about both virtual and real registers together without the need for circumlocution.)Arguments which indicate a literal value have the form "#+X". Some formats indicate literals that only have non-zero bits in their high-order bits; for these, the zeroes are represented explicitly in the syntax, even though they do not appear in the bitwise representation.Arguments which indicate a relative instruction address offset have the form "+X".Arguments which indicate a literal constant pool index have the form "kind@X", where "kind" indicates which constant pool is being referred to. Each opcode that uses such a format explicitly allows only one kind of constant; see the opcode reference to figure out the correspondence. The four kinds of constant pool are "string" (string pool index), "type" (type pool index), "field" (field pool index), and "meth" (method pool index).Similar to the representation of constant pool indices, there are also suggested (optional) forms that indicate prelinked offsets or indices. There are two types of suggested prelinked value: vtable offsets (indicated as "vtaboff") and field offsets (indicated as "fieldoff").
 In the cases where a format value isn't explictly part of the syntax but instead picks a variant, each variant is listed with the prefix "[X=N]" (e.g., "[A=2]") to indicate the correspondence.
-Format	ID	Syntax	Notable Opcodes Covered
-N/A	00x	N/A	pseudo-format used for unused opcodes; suggested for use as the nominal format for a breakpoint opcode
-ØØ|op	10x	op	 
-B|A|op	12x	op vA, vB	 
-	11n	op vA, #+B	 
-AA|op	11x	op vAA	 
-	10t	op +AA	goto
+Format	  ID	Syntax	Notable Opcodes Covered
+N/A	  00x	N/A	pseudo-format used for unused opcodes; suggested for use as the nominal format for a breakpoint opcode
+ØØ|op	  10x	op	 
+B|A|op	  12x	op vA,  vB	 
+	  11n	op vA,  #+B	 
+AA|op	  11x	op vAA	 
+	  10t	op +AA	goto
 ØØ|opAAAA	20t	op +AAAA	goto/16
 
 
